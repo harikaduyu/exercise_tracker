@@ -17,10 +17,6 @@
       href="http://fontlibrary.org/face/trueno"
       type="text/css"
     />
-    <script
-      src="https://kit.fontawesome.com/yourcode.js"
-      crossorigin="anonymous"
-    ></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -29,12 +25,21 @@
     <title>Exercise Tracker</title>
   </head>
   <body>
-    {% include 'accounts/navbar.html' %} {% block content %} {% endblock %}
+    {% include 'accounts/navbar.html' %}
+    <!--<br /> -->
+    {% block content %}
+    <!--<br /> -->
+    {% endblock %}
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted"
+          >© 2021 - Developed with 🖤 by Harika Duyu</span
+        >
+      </div>
+    </footer>
   </body>
-  <footer>
-    <hr />
-    <p>© 2021 - Developed with 🖤 by Harika Duyu</p>
-  </footer>
+
   <script
     src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
