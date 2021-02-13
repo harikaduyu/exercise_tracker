@@ -1,3 +1,14 @@
+html {
+  position: relative;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
 body * {
   font-family: 'TruenoRegular';
   font-style: normal;
@@ -10,4 +21,9 @@ body * {
 .logo {
   width: 0.5em;
   height: 0.5em;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
 }

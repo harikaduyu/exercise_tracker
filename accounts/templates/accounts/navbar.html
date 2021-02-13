@@ -10,7 +10,7 @@
   class="navbar navbar-expand-lg navbar-dark"
 
 >
-<a class="navbar-brand" href="#"> <img class="icon" src="{% static 'images/dumbbell-solid.svg' %}"> <div class="nav-item">Ex-Trackr</div></a>
+<a class="navbar-brand" href="{% url 'home' %}"> <img class="icon" src="{% static 'images/dumbbell-solid.svg' %}"> <div class="nav-item">Ex-Trackr</div></a>
   <button
     class="navbar-toggler"
     type="button"
@@ -28,7 +28,7 @@
         <a class="nav-link" href="#">Calendar</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Exercises</a>
+        <a class="nav-link" href="{% url 'exercises' %}">Exercises</a>
       </li>
     
     </ul>
