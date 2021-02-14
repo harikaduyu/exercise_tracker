@@ -1,5 +1,6 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from django.http import HttpResponse
 from django.views import generic
 from django.utils.safestring import mark_safe
@@ -32,7 +33,16 @@ def account(request, pk):
 
 
 def register(request):
-    form = RegisterForm()
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(
+                request, f"Account was created for {user.username}")
+            login(request, user)
+            return redirect('home')
+    else:
+        form = RegisterForm()
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
 
