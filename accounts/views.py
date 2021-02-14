@@ -32,7 +32,7 @@ def account(request, pk):
     return render(request, 'accounts/account.html', context)
 
 
-def register(request):
+def user_register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -45,6 +45,27 @@ def register(request):
         form = RegisterForm()
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
+
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, "Username or Password is wrong.")
+
+    return render(request, 'accounts/login.html')
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
 
 
 class CalendarView(generic.ListView):
