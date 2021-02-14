@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from django.http import HttpResponse
 from django.views import generic
 from django.utils.safestring import mark_safe
@@ -6,7 +7,7 @@ from datetime import datetime
 
 from .models import Exercise, Account, Routine
 from .utils import Calendar
-
+from .forms import RegisterForm
 # Create your views here.
 
 
@@ -28,6 +29,12 @@ def account(request, pk):
         'account': account_instance,
     }
     return render(request, 'accounts/account.html', context)
+
+
+def register(request):
+    form = RegisterForm()
+    context = {'form': form}
+    return render(request, 'accounts/register.html', context)
 
 
 class CalendarView(generic.ListView):
