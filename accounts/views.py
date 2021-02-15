@@ -39,8 +39,7 @@ def user_register(request):
             user = form.save()
             messages.success(
                 request, f"Account was created for {user.username}")
-            login(request, user)
-            return redirect('home')
+            return redirect('login')
     else:
         form = RegisterForm()
     context = {'form': form}
