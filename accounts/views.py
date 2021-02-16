@@ -8,7 +8,7 @@ from datetime import datetime
 
 from .models import Exercise, Account, Routine
 from .exercise_calendar import Calendar
-from .forms import RegisterForm
+from .forms import RegisterForm, RoutineForm
 # Create your views here.
 
 
@@ -65,6 +65,21 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+# todo: form not saving properly
+
+
+def create_routine_view(request):
+    account = request.user.account
+    if request.method == "POST":
+        form = RoutineForm(request.POST, instance=account)
+        if form.is_valid():
+            form.save()
+            return redirect('calendar')
+    else:
+        form = RoutineForm(instance=account)
+    context = {'form': form}
+    return render(request, 'accounts/routine_form.html', context)
 
 
 class CalendarView(generic.ListView):

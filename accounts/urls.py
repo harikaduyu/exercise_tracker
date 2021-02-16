@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/', views.user_logout, name="logout"),
     path('register/', views.user_register, name="register"),
     path('calendar/', views.CalendarView.as_view(), name='calendar'),
+    path('create_routine/', views.create_routine_view,  name='create_routine'),
 
 ]
