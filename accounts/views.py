@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 from datetime import datetime
 
 from .models import Exercise, Account, Routine
-from .utils import Calendar
+from .exercise_calendar import Calendar
 from .forms import RegisterForm
 # Create your views here.
 
