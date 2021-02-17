@@ -76,8 +76,10 @@ def user_logout(request):
 def create_routine_view(request):
     account = request.user.account
     if request.method == "POST":
-        form = RoutineForm(request.POST, instance=account)
+        form = RoutineForm(request.POST)
         if form.is_valid():
+            instance = form.save(commit=False)
+            instance.account = request.user.account
             form.save()
             return redirect('calendar')
     else:
