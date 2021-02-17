@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.views import generic
 from django.utils.safestring import mark_safe
 from datetime import datetime
-
+from django.contrib.auth.decorators import login_required
 from .models import Exercise, Account, Routine
 from .exercise_calendar import Calendar
 from .forms import RegisterForm, RoutineForm
@@ -16,11 +16,13 @@ def home(request):
     return render(request, 'accounts/home.html')
 
 
+@login_required(login_url='login')
 def exercises(request):
     exercises = Exercise.objects.all()
     return render(request, 'accounts/exercises.html', {'exercises': exercises})
 
 
+@login_required(login_url='login')
 def account(request, pk):
     account_instance = Account.objects.get(id=pk)
     routines = account_instance.routine_set.all()
@@ -32,6 +34,7 @@ def account(request, pk):
     return render(request, 'accounts/account.html', context)
 
 
+@login_required(login_url='login')
 def user_register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -69,6 +72,7 @@ def user_logout(request):
 # todo: form not saving properly
 
 
+@login_required(login_url='login')
 def create_routine_view(request):
     account = request.user.account
     if request.method == "POST":
