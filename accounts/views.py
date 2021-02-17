@@ -80,7 +80,7 @@ def create_routine_view(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.account = request.user.account
-            form.save()
+            instance.save()
             return redirect('calendar')
     else:
         form = RoutineForm(instance=account)
