@@ -4,4 +4,17 @@
 <br />
 {{ calendar }}
 <br />
+<form
+  action="{% url 'create_routine' %}"
+  method="get"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+  <input
+    class="btn btn-info"
+    type="submit"
+    value="Add new Routine"
+    name="submit"
+  />
+</form>
 {% endblock %}
