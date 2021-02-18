@@ -24,5 +24,18 @@
     </div>
   </div>
 </div>
+<form
+  action="{% url 'create_exercise' %}"
+  method="get"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+  <input
+    class="btn btn-info"
+    type="submit"
+    value="Add New Exercise"
+    name="submit"
+  />
+</form>
 
 {% endblock content %}
