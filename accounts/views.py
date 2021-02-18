@@ -8,8 +8,7 @@ from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from .models import Exercise, Account, Routine
 from .exercise_calendar import Calendar
-from .forms import RegisterForm, RoutineForm
-# Create your views here.
+from .forms import RegisterForm, RoutineForm, ExerciseForm
 
 
 def home(request):
@@ -86,6 +85,19 @@ def create_routine_view(request):
         form = RoutineForm(instance=account)
     context = {'form': form}
     return render(request, 'accounts/routine_form.html', context)
+
+
+@login_required(login_url='login')
+def create_exercise_view(request):
+    if request.method == "POST":
+        form = ExerciseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('exercises')
+    else:
+        form = ExerciseForm()
+    context = {'form': form}
+    return render(request, 'accounts/exercise_form.html', context)
 
 
 class CalendarView(generic.ListView):
