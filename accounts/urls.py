@@ -11,5 +11,7 @@ urlpatterns = [
     path('calendar/', views.CalendarView.as_view(), name='calendar'),
     path('create_routine/', views.create_routine_view,  name='create_routine'),
     path('create_exercise/', views.create_exercise_view,  name='create_exercise'),
+    path('delete_exercise/<str:pk>/',
+         views.delete_exercise_view,  name='delete_exercise'),
 
 ]

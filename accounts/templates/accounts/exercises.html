@@ -18,6 +18,22 @@
           <td>{{ exercise.name }}</td>
           <td>{{ exercise.category }}</td>
           <td>{{ exercise.description }}</td>
+          {% comment %}
+          <td>
+            <a
+              class="btn btn-sm btn-info"
+              href="{% url 'update_order' exercise.id %}"
+              >Update</a
+            >
+          </td>
+          {% endcomment %}
+          <td>
+            <a
+              class="btn btn-sm btn-danger"
+              href="{% url 'delete_exercise' exercise.id %}"
+              >Delete</a
+            >
+          </td>
         </tr>
         {% endfor %}
       </table>
