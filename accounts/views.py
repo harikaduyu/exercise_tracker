@@ -110,6 +110,19 @@ def delete_exercise_view(request, pk):
     return render(request, 'accounts/delete_exercise.html', context)
 
 
+@login_required(login_url='login')
+def update_exercise_view(request, pk):
+    exercise = Exercise.objects.get(id=pk)
+    if request.method == 'POST':
+        form = ExerciseForm(request.POST, instance=exercise)
+        if form.is_valid():
+            form.save()
+            return redirect('exercises')
+    form = ExerciseForm(instance=exercise)
+    context = {'form': form}
+    return render(request, 'accounts/exercise_form.html', context)
+
+
 class CalendarView(generic.ListView):
     model = Routine
     template_name = "accounts/calendar.html"
