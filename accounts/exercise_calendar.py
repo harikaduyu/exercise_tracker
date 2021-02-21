@@ -15,7 +15,7 @@ class Calendar(HTMLCalendar):
         routines_per_day = routines.filter(date_created__day=day)
         d = ''
         for routine in routines_per_day:
-            d += f"<li> {routine.exercise.name} </li>"
+            d += f'<li><a href="/update_routine/{routine.id}">{routine.exercise.name} </a></li>'
 
         if day != 0:
             return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"

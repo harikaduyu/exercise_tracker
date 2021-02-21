@@ -88,6 +88,23 @@ def create_routine_view(request):
 
 
 @login_required(login_url='login')
+def update_routine_view(request, pk):
+    routine = Routine.objects.get(id=pk)
+    account = request.user.account
+    if request.method == "POST":
+        form = RoutineForm(request.POST, instance=routine)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.account = request.user.account
+            instance.save()
+            return redirect('calendar')
+    else:
+        form = RoutineForm(instance=routine, )
+    context = {'form': form}
+    return render(request, 'accounts/routine_form.html', context)
+
+
+@login_required(login_url='login')
 def create_exercise_view(request):
     if request.method == "POST":
         form = ExerciseForm(request.POST)

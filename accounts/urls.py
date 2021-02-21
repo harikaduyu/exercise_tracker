@@ -10,9 +10,16 @@ urlpatterns = [
     path('register/', views.user_register, name="register"),
     path('calendar/', views.CalendarView.as_view(), name='calendar'),
     path('create_routine/', views.create_routine_view,  name='create_routine'),
+    path('update_routine/<str:pk>/',
+         views.update_routine_view,  name='update_routine'),
     path('create_exercise/', views.create_exercise_view,  name='create_exercise'),
     path('delete_exercise/<str:pk>/',
          views.delete_exercise_view,  name='delete_exercise'),
     path('update_exercise/<str:pk>/',
          views.update_exercise_view,  name='update_exercise'),
 ]
+# TODO:
+# Routine detail page
+# Update routine
+# Ability to add routine for a different date then now
+# Go to routine detail page by clicking on it on the calendar
