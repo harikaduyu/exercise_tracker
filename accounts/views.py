@@ -33,7 +33,6 @@ def account(request, pk):
     return render(request, 'accounts/account.html', context)
 
 
-@login_required(login_url='login')
 def user_register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
