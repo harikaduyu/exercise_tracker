@@ -18,8 +18,3 @@ urlpatterns = [
     path('update_exercise/<str:pk>/',
          views.update_exercise_view,  name='update_exercise'),
 ]
-# TODO:
-# Routine detail page
-# Update routine
-# Ability to add routine for a different date then now
-# Go to routine detail page by clicking on it on the calendar
