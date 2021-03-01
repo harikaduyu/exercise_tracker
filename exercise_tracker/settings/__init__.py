@@ -6,5 +6,5 @@ if environment == 'develop':
     print("DEVELOPMENT ENVIRONMENT")
     from .dev import *
 else:
-    print("PRODUCTIOn")
+    print("PRODUCTION")
     from .prod import *
