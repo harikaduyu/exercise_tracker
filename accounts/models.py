@@ -40,7 +40,7 @@ class Routine(models.Model):
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
     duration = models.DurationField(default=timedelta(minutes=25))
     date_created = models.DateTimeField(
-        default=timezone.now(),  null=True, blank=True)
+        default=timezone.now,  null=True, blank=True)
 
     def __str__(self):
         return self.exercise.name
