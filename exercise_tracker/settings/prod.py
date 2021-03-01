@@ -1,7 +1,7 @@
 import django_heroku
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['harikaduyu-exercise-tracker.herokuapp.com']
 
