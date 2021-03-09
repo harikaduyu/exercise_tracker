@@ -2,7 +2,7 @@ import os
 
 
 environment = os.environ.get("EX_TRACKER_ENV")
-if environment == 'develop':
+if environment != 'prod':
     print("DEVELOPMENT ENVIRONMENT")
     from .dev import *
 else:

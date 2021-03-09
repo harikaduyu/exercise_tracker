@@ -10,6 +10,8 @@ gunicorn = "*"
 django-heroku = "*"
 django-storages = "*"
 boto3 = "*"
+dj-database-url = "*"
+whitenoise = "*"
 
 [dev-packages]
 
