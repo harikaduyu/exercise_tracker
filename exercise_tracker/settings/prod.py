@@ -5,7 +5,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com']
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 LOGGING = {
     'version': 1,
