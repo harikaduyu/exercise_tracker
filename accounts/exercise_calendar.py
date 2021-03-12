@@ -4,9 +4,10 @@ from .models import Routine
 
 
 class Calendar(HTMLCalendar):
-    def __init__(self, year=None, month=None):
+    def __init__(self, account, year=None, month=None):
         self.year = year
         self.month = month
+        self.account = account
         super(Calendar, self).__init__()
 
     # formats a day as td
@@ -31,7 +32,8 @@ class Calendar(HTMLCalendar):
     # formats a month as table
     # filter routines by year and month
     def formatmonth(self, withyear=True):
-        routines = Routine.objects.filter(
+
+        routines = self.account.routine_set.filter(
             date_created__year=self.year, date_created__month=self.month)
         calendar_table = f"<table border='0' cellpadding='0' cellspacing='0' class='calendar' >\n"
         calendar_table += f"{self.formatmonthname(self.year, self.month, withyear=withyear)}\n"
