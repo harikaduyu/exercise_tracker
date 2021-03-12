@@ -143,16 +143,10 @@ class CalendarView(generic.ListView):
     model = Routine
     template_name = "accounts/calendar.html"
 
-    # TODO : Filter routines per account, and only show one users routines
-    # account = request.user.account
-    # queryset = account.routine_set.all()
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         today = _get_date(self.request.GET.get('day', None))
         account = self.request.user.account
-        routines = account.routine_set.all()
-        print(routines)
         calendar_instance = Calendar(account, today.year, today.month)
         html_calendar = calendar_instance.formatmonth(withyear=True)
         context['calendar'] = mark_safe(html_calendar)
