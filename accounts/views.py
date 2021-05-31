@@ -145,7 +145,7 @@ class CalendarView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        today = _get_date(self.request.GET.get('day', None))
+        today = self._get_date(self.request.GET.get('day', None))
         account = self.request.user.account
         calendar_instance = Calendar(account, today.year, today.month)
         html_calendar = calendar_instance.formatmonth(withyear=True)
@@ -153,10 +153,10 @@ class CalendarView(generic.ListView):
         return context
 
 
-def _get_date(request_day):
+    def _get_date(request_day):
 
-    if request_day:
-        year, month, day = (int(x) for x in request_day.split('-'))
-        return date(year, month, day)
+        if request_day:
+            year, month, day = (int(x) for x in request_day.split('-'))
+            return datetime.date(year, month, day)
 
-    return datetime.today()
+        return datetime.today()
